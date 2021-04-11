@@ -1,0 +1,34 @@
+<div class="app-pdf-viewer">
+    <div class="header">
+        <div class="left">
+            <div class="pager">
+                <input class="page-input" [(ngModel)]="pageNumberText" (change)="pageInputChange($event)" type="number" /> /
+                <span>{{totalPages}}</span>
+            </div>
+        </div>
+        <div class="center">
+            <div class="zoom">
+                <a (click)="zoomOut()" class="clickable-icon">
+                    <i class="fa fa-search-minus" aria-hidden="true"></i>
+                </a>
+                <input class="page-input" [(ngModel)]="pageZoomPercentText" (change)="pageZoomPercentTextChange($event)" />
+                <a (click)="zoomIn()" class="clickable-icon">
+                    <i class="fa fa-search-plus" aria-hidden="true"></i>
+                </a>
+                <a (click)="resetZoom()" class="clickable-icon">
+                    <i class="fa fa-refresh" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+        <div class="right">
+            <a (click)="downloadFile($event)" *ngIf="isDownloadable" class="clickable-icon">
+                <i class="fa fa-download" aria-hidden="true"></i>
+            </a>
+            <a (click)="printFile($event)" *ngIf="isPrintable" class="clickable-icon">
+                <i class="fa fa-print" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+    <pdf-viewer class="pdf-viewer" style="display: block;" [page]="page" (pagechanging)="pagechanging($event)" (after-load-complete)="afterLoadComplete($event)" [stick-to-page]="true" [zoom]="pdfZoom" [original-size]="true" [src]="pdfSrc" [render-text]="false"
+        onselectstart="return false;"></pdf-viewer>
+</div>

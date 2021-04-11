@@ -1,0 +1,15 @@
+<div>
+    <h3>
+        Inline Editing
+        <small>
+        <a
+          href="https://github.com/swimlane/ngx-datatable/blob/master/src/app/basic/inline.component.ts"
+          target="_blank"
+        >
+          Source
+        </a>
+      </small>
+    </h3>
+    <ngx-datatable class="material selection-cell" [rows]="rows" [columnMode]="ColumnMode.force" [columns]="columns" [headerHeight]="50" [footerHeight]="50" [rowHeight]="50" [selected]="selected" [selectionType]="SelectionType.cell" (activate)="onActivate($event)">
+    </ngx-datatable>
+</div>
