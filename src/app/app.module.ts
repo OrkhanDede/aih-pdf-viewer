@@ -10,18 +10,15 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import {PdfViewerComponent} from './pdf-viewer/app-pdf-viewer.component'
 import {ProtocolComponent} from './protocol/protocol.component'
 import {PdfUploaderComponent} from './pdf-uploader/pdf-uploader.component'
-
 import { ProtocolService } from './services/ProtocolServie';
 
 @NgModule({
   declarations: [
     AppComponent,
-   
     AihTable,
     PdfViewerComponent,
     PdfUploaderComponent,
     ProtocolComponent,
-    
   ],
   imports: [
     HttpClientModule,

@@ -29,6 +29,9 @@
             </a>
         </div>
     </div>
-    <pdf-viewer class="pdf-viewer" style="display: block;" [page]="page" (pagechanging)="pagechanging($event)" (after-load-complete)="afterLoadComplete($event)" [stick-to-page]="true" [zoom]="pdfZoom" [original-size]="true" [src]="pdfSrc" [render-text]="false"
-        onselectstart="return false;"></pdf-viewer>
+    <div class="body">
+        <pdf-viewer (wheel)="onWheelAndCtrl($event)" class="pdf-viewer" style="display: block;" [page]="page" (pagechanging)="pagechanging($event)" (after-load-complete)="afterLoadComplete($event)" [stick-to-page]="true" [zoom]="pdfZoom" [original-size]="true"
+            [fit-to-page]="false" [autoresize]="true" zoom-scale="page-width" [src]="pdfSrc" [render-text]="false" onselectstart="return false;"></pdf-viewer>
+    </div>
+
 </div>

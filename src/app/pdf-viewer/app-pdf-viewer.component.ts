@@ -17,7 +17,7 @@ export class PdfViewerComponent implements OnInit {
     @Output() onClickPrintBtn = new EventEmitter<boolean>();
     
 
-   
+    zoomScale = 'page-width';
     pdfZoom:number = DEFAULT_ZOOM;
     page: number = 1;
     totalPages: number=1;
@@ -28,7 +28,6 @@ export class PdfViewerComponent implements OnInit {
     ngOnInit(){
     }
     afterLoadComplete(pdfData: any) {
-        console.log("after looooadd");
         this.totalPages = pdfData.numPages;
         this.isLoaded = true;
       }
@@ -44,12 +43,10 @@ export class PdfViewerComponent implements OnInit {
         }
     }
     pagechanging(e:any){
-        console.log("pagechanginggggggg");
         this.pageNumberText = e.pageNumber; 
     }
     pageInputChange(e:any){
         let pNumber=e.target.value;
-        console.log(pNumber);
         if(pNumber>this.totalPages){
             this.page=this.totalPages;
             this.pageNumberText=this.totalPages;
@@ -85,8 +82,18 @@ export class PdfViewerComponent implements OnInit {
 		this.pdfZoom = DEFAULT_ZOOM;
         this.pageZoomPercentText=this.getPageZoomWithPercentage();
 	}
+    onWheelAndCtrl(e:any){
+        if(e.ctrlKey){
+            if(e.deltaY<0){
+                this.zoomIn()
+            }
+            else if(e.deltaY>0){
+                this.zoomOut()
+            }
+            e.preventDefault()
+        }
+    }
     private getPageZoomWithPercentage(){
         return `${this.pdfZoom*100}%`;
     }
-
 }
