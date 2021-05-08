@@ -9,7 +9,7 @@ export class ProtocolService  {
   constructor(private http: HttpClient) {
   }
   public getFile(){
-    return this.http.get("https://localhost:44379/api/Protocols",{ responseType: 'blob' });
+    return this.http.get("https://localhost:44379/api/Protocols",{ responseType: 'json' });
   }
 }
 
